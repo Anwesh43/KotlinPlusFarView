@@ -83,8 +83,8 @@ class PlusFarView(ctx : Context) : View(ctx) {
                 for(j in 0..1) {
                     canvas.save()
                     canvas.scale(1f - 2* j, 1f)
-                    val x = w/2 * (1 - state.scales[0])
-                    canvas.drawLine(x, 0f, 0f, x + size, paint)
+                    val x = (w/2 + paint.strokeWidth) * (1 - state.scales[0])
+                    canvas.drawLine(x, 0f, x + size, 0f, paint)
                     canvas.restore()
                 }
                 canvas.restore()
