@@ -95,4 +95,22 @@ class PlusFarView(ctx : Context) : View(ctx) {
             state.startUpdating(startcb)
         }
     }
+    data class Renderer(var view : PlusFarView) {
+        val plusFar : PlusFar = PlusFar(0)
+        val animator : Animator = Animator(view)
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(Color.parseColor("#212121"))
+            plusFar.draw(canvas, paint)
+            animator.animate {
+                plusFar.update {
+                    animator.stop()
+                }
+            }
+        }
+        fun handleTap() {
+            plusFar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
