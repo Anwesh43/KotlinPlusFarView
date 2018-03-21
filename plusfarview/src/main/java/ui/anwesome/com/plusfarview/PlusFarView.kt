@@ -3,6 +3,7 @@ package ui.anwesome.com.plusfarview
 /**
  * Created by anweshmishra on 21/03/18.
  */
+import android.app.Activity
 import android.view.*
 import android.content.*
 import android.graphics.*
@@ -111,6 +112,13 @@ class PlusFarView(ctx : Context) : View(ctx) {
             plusFar.startUpdating {
                 animator.start()
             }
+        }
+    }
+    companion object {
+        fun create(activity : Activity) : PlusFarView {
+            val view = PlusFarView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
